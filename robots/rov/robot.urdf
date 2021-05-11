@@ -1,0 +1,659 @@
+<robot name="onshape">
+<link name="origin_1">
+<visual>
+<origin xyz="0 0 0" rpy="0 -0 0" />
+<geometry>
+<mesh filename="package://origin.stl"/>
+</geometry>
+<material name="origin_material">
+<color rgba="0.917647 0.917647 0.917647 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0 0 0" rpy="0 -0 0" />
+<geometry>
+<mesh filename="package://origin.stl"/>
+</geometry>
+<material name="origin_material">
+<color rgba="0.917647 0.917647 0.917647 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="2.00257e-19 0 0.005" rpy="0 0 0"/>
+<mass value="0.00100007" />
+<inertia ixx="1.66679e-08" ixy="0"  ixz="0" iyy="1.66679e-08" iyz="0" izz="1.66679e-08" />
+</inertial>
+</link>
+
+<link name="POWERBOX">
+<visual>
+<origin xyz="3.46945e-17 4.79272e-18 -1.55196e-16" rpy="0 -0 -6.22528e-60" />
+<geometry>
+<mesh filename="package://power_box.stl"/>
+</geometry>
+<material name="power_box_material">
+<color rgba="1 0.756863 0.054902 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="3.46945e-17 4.79272e-18 -1.55196e-16" rpy="0 -0 -6.22528e-60" />
+<geometry>
+<mesh filename="package://power_box.stl"/>
+</geometry>
+<material name="power_box_material">
+<color rgba="1 0.756863 0.054902 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="3.46945e-17 4.79272e-18 -1.55196e-16" rpy="0 0 0"/>
+<mass value="4.197" />
+<inertia ixx="0" ixy="0"  ixz="0" iyy="0" iyz="0" izz="0" />
+</inertial>
+</link>
+
+<link name="FRAME">
+<visual>
+<origin xyz="-0.0762 0 0" rpy="0 -1.44543e-89 0" />
+<geometry>
+<mesh filename="package://frame.stl"/>
+</geometry>
+<material name="frame_material">
+<color rgba="0.188235 0.188235 0.188235 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="-0.0762 0 0" rpy="0 -1.44543e-89 0" />
+<geometry>
+<mesh filename="package://frame.stl"/>
+</geometry>
+<material name="frame_material">
+<color rgba="0.188235 0.188235 0.188235 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-0.0762 0 0" rpy="0 0 0"/>
+<mass value="2.208" />
+<inertia ixx="0" ixy="0"  ixz="0" iyy="0" iyz="0" izz="0" />
+</inertial>
+</link>
+
+<link name="FOAM_1">
+<visual>
+<origin xyz="1.249e-16 0.241635 0" rpy="0 -1.44543e-89 0" />
+<geometry>
+<mesh filename="package://foam_l.stl"/>
+</geometry>
+<material name="foam_l_material">
+<color rgba="0.188235 0.188235 0.188235 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="1.249e-16 0.241635 0" rpy="0 -1.44543e-89 0" />
+<geometry>
+<mesh filename="package://foam_l.stl"/>
+</geometry>
+<material name="foam_l_material">
+<color rgba="0.188235 0.188235 0.188235 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="1.249e-16 0.241635 0" rpy="0 0 0"/>
+<mass value="0.23745" />
+<inertia ixx="0" ixy="0"  ixz="0" iyy="0" iyz="0" izz="0" />
+</inertial>
+</link>
+
+<joint name="FOAM_1" type="fixed">
+<origin xyz="-0.0762 -0.241635 9.86076e-32" rpy="0 -1.44543e-89 0" />
+<parent link="FRAME" />
+<child link="FOAM_1" />
+<axis xyz="0 0 -1"/>
+<limit effort="1.5" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="FOAM_2">
+<visual>
+<origin xyz="1.249e-16 -0.241635 0" rpy="0 -1.44543e-89 0" />
+<geometry>
+<mesh filename="package://foam_r.stl"/>
+</geometry>
+<material name="foam_r_material">
+<color rgba="0.188235 0.188235 0.188235 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="1.249e-16 -0.241635 0" rpy="0 -1.44543e-89 0" />
+<geometry>
+<mesh filename="package://foam_r.stl"/>
+</geometry>
+<material name="foam_r_material">
+<color rgba="0.188235 0.188235 0.188235 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="1.249e-16 -0.241635 0" rpy="0 0 0"/>
+<mass value="0.23745" />
+<inertia ixx="0" ixy="0"  ixz="0" iyy="0" iyz="0" izz="0" />
+</inertial>
+</link>
+
+<joint name="FOAM_2" type="fixed">
+<origin xyz="-0.0762 0.241635 9.82224e-32" rpy="0 -1.44543e-89 0" />
+<parent link="FRAME" />
+<child link="FOAM_2" />
+<axis xyz="0 0 -1"/>
+<limit effort="1.5" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="LOGIC">
+<visual>
+<origin xyz="0 0 0.0577974" rpy="0 3.91455e-63 0" />
+<geometry>
+<mesh filename="package://logic_box.stl"/>
+</geometry>
+<material name="logic_box_material">
+<color rgba="1 0.756863 0.054902 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0 0 0.0577974" rpy="0 3.91455e-63 0" />
+<geometry>
+<mesh filename="package://logic_box.stl"/>
+</geometry>
+<material name="logic_box_material">
+<color rgba="1 0.756863 0.054902 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="0 0 0.0577974" rpy="0 0 0"/>
+<mass value="0.398708" />
+<inertia ixx="0" ixy="0"  ixz="0" iyy="0" iyz="0" izz="0" />
+</inertial>
+</link>
+
+<joint name="LOGIC" type="fixed">
+<origin xyz="0.09525 0.0508 0.0508" rpy="1.5708 1.49452e-31 7.95766e-49" />
+<parent link="FRAME" />
+<child link="LOGIC" />
+<axis xyz="3.13156e-31 -7.80387e-31 1"/>
+<limit effort="1.5" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="FOOT_1">
+<visual>
+<origin xyz="0 0 5.55112e-17" rpy="0 -1.44543e-89 0" />
+<geometry>
+<mesh filename="package://foot.stl"/>
+</geometry>
+<material name="foot_material">
+<color rgba="0.188235 0.188235 0.188235 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0 0 5.55112e-17" rpy="0 -1.44543e-89 0" />
+<geometry>
+<mesh filename="package://foot.stl"/>
+</geometry>
+<material name="foot_material">
+<color rgba="0.188235 0.188235 0.188235 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-0.00566586 0.0020622 -0.0146296" rpy="0 0 0"/>
+<mass value="0.0275585" />
+<inertia ixx="3.88471e-06" ixy="3.98962e-06"  ixz="-8.6046e-07" iyy="1.3394e-05" iyz="3.13182e-07" izz="1.2824e-05" />
+</inertial>
+</link>
+
+<joint name="FOOT_1" type="fixed">
+<origin xyz="0.0581661 0.206169 -0.1778" rpy="0 -1.44543e-89 0" />
+<parent link="FRAME" />
+<child link="FOOT_1" />
+<axis xyz="0 0 1"/>
+<limit effort="1.5" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="FOOT_2">
+<visual>
+<origin xyz="-4.85723e-17 0 5.55112e-17" rpy="-1.75162e-46 -0 1.77261e-17" />
+<geometry>
+<mesh filename="package://foot.stl"/>
+</geometry>
+<material name="foot_material">
+<color rgba="0.188235 0.188235 0.188235 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="-4.85723e-17 0 5.55112e-17" rpy="-1.75162e-46 -0 1.77261e-17" />
+<geometry>
+<mesh filename="package://foot.stl"/>
+</geometry>
+<material name="foot_material">
+<color rgba="0.188235 0.188235 0.188235 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-0.00566586 0.0020622 -0.0146296" rpy="0 0 0"/>
+<mass value="0.0275585" />
+<inertia ixx="3.88471e-06" ixy="3.98962e-06"  ixz="-8.6046e-07" iyy="1.3394e-05" iyz="3.13182e-07" izz="1.2824e-05" />
+</inertial>
+</link>
+
+<joint name="FOOT_2" type="fixed">
+<origin xyz="-0.210566 0.206169 -0.1778" rpy="-2.14583e-42 1.80943e-43 -2.44346" />
+<parent link="FRAME" />
+<child link="FOOT_2" />
+<axis xyz="0 0 1"/>
+<limit effort="1.5" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="FOOT_3">
+<visual>
+<origin xyz="0 0 5.55112e-17" rpy="0 -0 7.8652e-73" />
+<geometry>
+<mesh filename="package://foot.stl"/>
+</geometry>
+<material name="foot_material">
+<color rgba="0.188235 0.188235 0.188235 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0 0 5.55112e-17" rpy="0 -0 7.8652e-73" />
+<geometry>
+<mesh filename="package://foot.stl"/>
+</geometry>
+<material name="foot_material">
+<color rgba="0.188235 0.188235 0.188235 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-0.00566586 0.0020622 -0.0146296" rpy="0 0 0"/>
+<mass value="0.0275585" />
+<inertia ixx="3.88471e-06" ixy="3.98962e-06"  ixz="-8.6046e-07" iyy="1.3394e-05" iyz="3.13182e-07" izz="1.2824e-05" />
+</inertial>
+</link>
+
+<joint name="FOOT_3" type="fixed">
+<origin xyz="-0.210566 -0.206169 -0.1778" rpy="-3.47522e-42 1.04257e-42 -3.14159" />
+<parent link="FRAME" />
+<child link="FOOT_3" />
+<axis xyz="0 0 1"/>
+<limit effort="1.5" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="FOOT_4">
+<visual>
+<origin xyz="3.46945e-18 2.77556e-17 5.55112e-17" rpy="8.75812e-47 -8.75812e-47 1.77261e-17" />
+<geometry>
+<mesh filename="package://foot.stl"/>
+</geometry>
+<material name="foot_material">
+<color rgba="0.188235 0.188235 0.188235 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="3.46945e-18 2.77556e-17 5.55112e-17" rpy="8.75812e-47 -8.75812e-47 1.77261e-17" />
+<geometry>
+<mesh filename="package://foot.stl"/>
+</geometry>
+<material name="foot_material">
+<color rgba="0.188235 0.188235 0.188235 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-0.00566586 0.0020622 -0.0146296" rpy="0 0 0"/>
+<mass value="0.0275585" />
+<inertia ixx="3.88471e-06" ixy="3.98962e-06"  ixz="-8.6046e-07" iyy="1.3394e-05" iyz="3.13182e-07" izz="1.2824e-05" />
+</inertial>
+</link>
+
+<joint name="FOOT_4" type="fixed">
+<origin xyz="0.0581661 -0.206169 -0.1778" rpy="-3.47522e-43 -0 0.698132" />
+<parent link="FRAME" />
+<child link="FOOT_4" />
+<axis xyz="0 0 1"/>
+<limit effort="1.5" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="FRAME" type="fixed">
+<origin xyz="-0.12065 -1.95677e-15 4.23273e-16" rpy="6.17066e-29 -3.49148e-15 3.14159" />
+<parent link="POWERBOX" />
+<child link="FRAME" />
+<axis xyz="0 0 1"/>
+<limit effort="1.5" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="THRUSTER_1">
+<visual>
+<origin xyz="0 0 0" rpy="0 -0 0" />
+<geometry>
+<mesh filename="package://thruster_vert.stl"/>
+</geometry>
+<material name="thruster_vert_material">
+<color rgba="0.188235 0.188235 0.188235 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0 0 0" rpy="0 -0 0" />
+<geometry>
+<mesh filename="package://thruster_vert.stl"/>
+</geometry>
+<material name="thruster_vert_material">
+<color rgba="0.188235 0.188235 0.188235 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="0 0 0" rpy="0 0 0"/>
+<mass value="0.344" />
+<inertia ixx="0" ixy="0"  ixz="0" iyy="0" iyz="0" izz="0" />
+</inertial>
+</link>
+
+<joint name="THRUSTER_1" type="fixed">
+<origin xyz="-0.157163 -0.144247 5.4873e-16" rpy="6.09522e-29 -3.49148e-15 3.14159" />
+<parent link="POWERBOX" />
+<child link="THRUSTER_1" />
+<axis xyz="0 0 1"/>
+<limit effort="1.5" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="THRUSTER_2">
+<visual>
+<origin xyz="0 0 0" rpy="0 -0 0" />
+<geometry>
+<mesh filename="package://thruster_vert.stl"/>
+</geometry>
+<material name="thruster_vert_material">
+<color rgba="0.188235 0.188235 0.188235 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0 0 0" rpy="0 -0 0" />
+<geometry>
+<mesh filename="package://thruster_vert.stl"/>
+</geometry>
+<material name="thruster_vert_material">
+<color rgba="0.188235 0.188235 0.188235 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="0 0 0" rpy="0 0 0"/>
+<mass value="0.344" />
+<inertia ixx="0" ixy="0"  ixz="0" iyy="0" iyz="0" izz="0" />
+</inertial>
+</link>
+
+<joint name="THRUSTER_2" type="fixed">
+<origin xyz="0.0682625 -0.144247 -2.38337e-16" rpy="6.09522e-29 -3.49148e-15 3.14159" />
+<parent link="POWERBOX" />
+<child link="THRUSTER_2" />
+<axis xyz="0 0 1"/>
+<limit effort="1.5" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="THRUSTER_3">
+<visual>
+<origin xyz="0 0 0" rpy="0 -0 0" />
+<geometry>
+<mesh filename="package://thruster_vert.stl"/>
+</geometry>
+<material name="thruster_vert_material">
+<color rgba="0.188235 0.188235 0.188235 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0 0 0" rpy="0 -0 0" />
+<geometry>
+<mesh filename="package://thruster_vert.stl"/>
+</geometry>
+<material name="thruster_vert_material">
+<color rgba="0.188235 0.188235 0.188235 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="0 0 0" rpy="0 0 0"/>
+<mass value="0.344" />
+<inertia ixx="0" ixy="0"  ixz="0" iyy="0" iyz="0" izz="0" />
+</inertial>
+</link>
+
+<joint name="THRUSTER_3" type="fixed">
+<origin xyz="0.0682625 0.144247 -2.38337e-16" rpy="6.09522e-29 -3.49148e-15 3.14159" />
+<parent link="POWERBOX" />
+<child link="THRUSTER_3" />
+<axis xyz="0 0 1"/>
+<limit effort="1.5" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="THRUSTER_4">
+<visual>
+<origin xyz="0 0 0" rpy="0 -0 0" />
+<geometry>
+<mesh filename="package://thruster_vert.stl"/>
+</geometry>
+<material name="thruster_vert_material">
+<color rgba="0.188235 0.188235 0.188235 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0 0 0" rpy="0 -0 0" />
+<geometry>
+<mesh filename="package://thruster_vert.stl"/>
+</geometry>
+<material name="thruster_vert_material">
+<color rgba="0.188235 0.188235 0.188235 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="0 0 0" rpy="0 0 0"/>
+<mass value="0.344" />
+<inertia ixx="0" ixy="0"  ixz="0" iyy="0" iyz="0" izz="0" />
+</inertial>
+</link>
+
+<joint name="THRUSTER_4" type="fixed">
+<origin xyz="-0.157163 0.144247 5.4873e-16" rpy="6.09522e-29 -3.49148e-15 3.14159" />
+<parent link="POWERBOX" />
+<child link="THRUSTER_4" />
+<axis xyz="0 0 1"/>
+<limit effort="1.5" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="THRUSTER_5">
+<visual>
+<origin xyz="-2.77556e-17 0 0" rpy="3.74103e-32 2.28774e-17 1.81478e-32" />
+<geometry>
+<mesh filename="package://thruster_hori.stl"/>
+</geometry>
+<material name="thruster_hori_material">
+<color rgba="0.188235 0.188235 0.188235 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="-2.77556e-17 0 0" rpy="3.74103e-32 2.28774e-17 1.81478e-32" />
+<geometry>
+<mesh filename="package://thruster_hori.stl"/>
+</geometry>
+<material name="thruster_hori_material">
+<color rgba="0.188235 0.188235 0.188235 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-2.77556e-17 0 0" rpy="0 0 0"/>
+<mass value="0.344" />
+<inertia ixx="0" ixy="0"  ixz="0" iyy="0" iyz="0" izz="0" />
+</inertial>
+</link>
+
+<joint name="THRUSTER_5" type="fixed">
+<origin xyz="-0.214122 -0.191008 -0.05715" rpy="1.5708 -8.96169e-16 -1.91986" />
+<parent link="POWERBOX" />
+<child link="THRUSTER_5" />
+<axis xyz="0 0 1"/>
+<limit effort="1.5" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="THRUSTER_6">
+<visual>
+<origin xyz="-2.77556e-17 0 0" rpy="3.1156e-32 -1.51206e-17 8.32021e-45" />
+<geometry>
+<mesh filename="package://thruster_hori.stl"/>
+</geometry>
+<material name="thruster_hori_material">
+<color rgba="0.188235 0.188235 0.188235 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="-2.77556e-17 0 0" rpy="3.1156e-32 -1.51206e-17 8.32021e-45" />
+<geometry>
+<mesh filename="package://thruster_hori.stl"/>
+</geometry>
+<material name="thruster_hori_material">
+<color rgba="0.188235 0.188235 0.188235 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-2.77556e-17 0 0" rpy="0 0 0"/>
+<mass value="0.344" />
+<inertia ixx="0" ixy="0"  ixz="0" iyy="0" iyz="0" izz="0" />
+</inertial>
+</link>
+
+<joint name="THRUSTER_6" type="fixed">
+<origin xyz="0.137922 -0.191008 -0.05715" rpy="-1.5708 1.19416e-15 -1.22173" />
+<parent link="POWERBOX" />
+<child link="THRUSTER_6" />
+<axis xyz="0 0 1"/>
+<limit effort="1.5" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="THRUSTER_7">
+<visual>
+<origin xyz="0 0 0" rpy="0 3.05781e-17 -1.12104e-44" />
+<geometry>
+<mesh filename="package://thruster_hori.stl"/>
+</geometry>
+<material name="thruster_hori_material">
+<color rgba="0.188235 0.188235 0.188235 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0 0 0" rpy="0 3.05781e-17 -1.12104e-44" />
+<geometry>
+<mesh filename="package://thruster_hori.stl"/>
+</geometry>
+<material name="thruster_hori_material">
+<color rgba="0.188235 0.188235 0.188235 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="0 0 0" rpy="0 0 0"/>
+<mass value="0.344" />
+<inertia ixx="0" ixy="0"  ixz="0" iyy="0" iyz="0" izz="0" />
+</inertial>
+</link>
+
+<joint name="THRUSTER_7" type="fixed">
+<origin xyz="0.137922 0.191008 -0.05715" rpy="-1.5708 -1.19416e-15 -1.91986" />
+<parent link="POWERBOX" />
+<child link="THRUSTER_7" />
+<axis xyz="0 0 1"/>
+<limit effort="1.5" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="THRUSTER_8">
+<visual>
+<origin xyz="0 0 0" rpy="1.0088e-31 -4.363e-17 2.6344e-32" />
+<geometry>
+<mesh filename="package://thruster_hori.stl"/>
+</geometry>
+<material name="thruster_hori_material">
+<color rgba="0.188235 0.188235 0.188235 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0 0 0" rpy="1.0088e-31 -4.363e-17 2.6344e-32" />
+<geometry>
+<mesh filename="package://thruster_hori.stl"/>
+</geometry>
+<material name="thruster_hori_material">
+<color rgba="0.188235 0.188235 0.188235 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="0 0 0" rpy="0 0 0"/>
+<mass value="0.344" />
+<inertia ixx="0" ixy="0"  ixz="0" iyy="0" iyz="0" izz="0" />
+</inertial>
+</link>
+
+<joint name="THRUSTER_8" type="fixed">
+<origin xyz="-0.214122 0.191008 -0.05715" rpy="1.5708 1.50137e-15 -1.22173" />
+<parent link="POWERBOX" />
+<child link="THRUSTER_8" />
+<axis xyz="0 0 1"/>
+<limit effort="1.5" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="POWERBOX" type="fixed">
+<origin xyz="-0.04445 5.3926e-32 0" rpy="6.09522e-29 -3.49148e-15 -3.14159" />
+<parent link="origin_1" />
+<child link="POWERBOX" />
+<axis xyz="-3.49148e-15 -6.09522e-29 -1"/>
+<limit effort="1.5" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="AIRBOX">
+<visual>
+<origin xyz="0 0 -8.67362e-19" rpy="0 -0 0" />
+<geometry>
+<mesh filename="package://air_box.stl"/>
+</geometry>
+<material name="air_box_material">
+<color rgba="0.188235 0.188235 0.188235 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0 0 -8.67362e-19" rpy="0 -0 0" />
+<geometry>
+<mesh filename="package://air_box.stl"/>
+</geometry>
+<material name="air_box_material">
+<color rgba="0.188235 0.188235 0.188235 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="0 0 -8.67362e-19" rpy="0 0 0"/>
+<mass value="0.369224" />
+<inertia ixx="0" ixy="0"  ixz="0" iyy="0" iyz="0" izz="0" />
+</inertial>
+</link>
+
+<joint name="AIRBOX" type="fixed">
+<origin xyz="0 0 -0.00635" rpy="0 -0 0" />
+<parent link="origin_1" />
+<child link="AIRBOX" />
+<axis xyz="0 0 1"/>
+<limit effort="1.5" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+
+</robot>

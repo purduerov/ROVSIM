@@ -1,0 +1,32 @@
+{
+  "onshape_api": "https://cad.onshape.com",
+  "onshape_access_key": "j3nJRmee21CzEocTjRFzCpse",
+  "onshape_secret_key": "oSUS9XDscJDcWo3F1Oxr3jiQmg7fTKXfridJt00ewmJSIRED",
+
+  "documentId": "967289ab5f648a205f3b955c",
+
+  "assemblyName": "ROV",
+  "outputFormat": "urdf",
+  "drawFrames": false,
+  "drawCollisions": false,
+  "useScads": false,
+  "noDynamics": false,
+  "mergeSTLs": "no",
+  "simplifySTLs": "no",
+  "maxSTLSize": 3,
+
+  "jointMaxEffort": {
+      "default": 1.5,
+      "yeet": 1
+  },
+
+  "jointMaxVelocity": 20,
+
+  "dynamics": {
+      "yeet": "fixed"
+  },
+
+  "ignore": [
+      "yeet"
+  ]
+}
