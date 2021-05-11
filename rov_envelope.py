@@ -7,7 +7,7 @@ from mpl_toolkits.mplot3d import axes3d, Axes3D
 
 THRUST_MAX = 3.71
 THRUST_MIN = -2.9
-POINTS = 100000
+POINTS = 1000
 
 tm = ThrustMapper()
 
@@ -54,7 +54,7 @@ for point_num, point in enumerate(sphere_points):
 
     desired_force_final = np.array([*thrust_vec, 0, 0, 0], dtype=np.float)
     desired_torque_final = np.array([0, 0, 0, 0, 0, 0], dtype=np.float)
-    thrust_output = tm.thruster_output2(desired_force_final, desired_torque_final, tm.pseudo_inverse)
+    thrust_output = tm.thruster_output(desired_force_final, desired_torque_final)
     # thrust_output = tm.thruster_output(desired_force_final, desired_torque_final)
 
     thrust = np.array([0, 0, 0])
