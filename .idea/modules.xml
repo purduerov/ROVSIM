@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/ROVSIM.iml" filepath="$PROJECT_DIR$/.idea/ROVSIM.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../onshape_to_robot/.idea/onshape_to_robot.iml" filepath="$PROJECT_DIR$/../onshape_to_robot/.idea/onshape_to_robot.iml" />
+    </modules>
+  </component>
+</project>
