@@ -11,3 +11,6 @@ or
 else:
 
 `pip install -r requirements.txt` 
+
+
+Get started by running `python3 rovsim.py`
