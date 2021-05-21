@@ -3,3 +3,4 @@ pybullet~=3.0.6
 pygame~=2.0.1
 matplotlib~=3.3.4
 numba~=0.53.1
+scipy
