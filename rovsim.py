@@ -104,19 +104,19 @@ if joystick:
     old_buttons = [joystick.get_button(num) for num in range(joystick.get_numbuttons())]
 
 key_map = {
-    65297: np.array([1, 0, 0, 0, 0, 0], dtype=np.float),  # arrow up +X
-    65298: np.array([-1, 0, 0, 0, 0, 0], dtype=np.float),  # arrow down -X
-    65295: np.array([0, 1, 0, 0, 0, 0], dtype=np.float),  # arrow right +Y
-    65296: np.array([0, -1, 0, 0, 0, 0], dtype=np.float),  # arrow left -Y
-    32:    np.array([0, 0, 1, 0, 0, 0], dtype=np.float),  # space bar +Z
-    65306: np.array([0, 0, -1, 0, 0, 0], dtype=np.float),  # left shift -Z
+    65297: np.array([1, 0, 0, 0, 0, 0], dtype=np.float64),  # arrow up +X
+    65298: np.array([-1, 0, 0, 0, 0, 0], dtype=np.float64),  # arrow down -X
+    65295: np.array([0, 1, 0, 0, 0, 0], dtype=np.float64),  # arrow right +Y
+    65296: np.array([0, -1, 0, 0, 0, 0], dtype=np.float64),  # arrow left -Y
+    32:    np.array([0, 0, 1, 0, 0, 0], dtype=np.float64),  # space bar +Z
+    65306: np.array([0, 0, -1, 0, 0, 0], dtype=np.float64),  # left shift -Z
 
-    107:   np.array([0, 0, 0, 1, 0, 0], dtype=np.float),  # K +R
-    104:   np.array([0, 0, 0, -1, 0, 0], dtype=np.float),  # H -R
-    106:   np.array([0, 0, 0, 0, 1, 0], dtype=np.float),  # J +P
-    110:   np.array([0, 0, 0, 0, -1, 0], dtype=np.float),  # N -P
-    98:   np.array([0, 0, 0, 0, 0, 1], dtype=np.float),  # B +Y
-    109:   np.array([0, 0, 0, 0, 0, -1], dtype=np.float),  # M -Y
+    107:   np.array([0, 0, 0, 1, 0, 0], dtype=np.float64),  # K +R
+    104:   np.array([0, 0, 0, -1, 0, 0], dtype=np.float64),  # H -R
+    106:   np.array([0, 0, 0, 0, 1, 0], dtype=np.float64),  # J +P
+    110:   np.array([0, 0, 0, 0, -1, 0], dtype=np.float64),  # N -P
+    98:   np.array([0, 0, 0, 0, 0, 1], dtype=np.float64),  # B +Y
+    109:   np.array([0, 0, 0, 0, 0, -1], dtype=np.float64),  # M -Y
 }
 
 while True:
