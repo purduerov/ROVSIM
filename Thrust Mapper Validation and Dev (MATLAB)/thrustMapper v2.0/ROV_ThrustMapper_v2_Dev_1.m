@@ -8,7 +8,7 @@ close all; clear; clc;
 tm = thrustMapper([0,0,0]);
 %tm.plotSetup();
 
-%% TEST CASES
+%% INDIVIDUAL TEST CASES
 testCase = 1;
 switch(testCase)
     case 1
