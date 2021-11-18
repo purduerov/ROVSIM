@@ -1,7 +1,8 @@
 %% ROV Triton: Thrust Mapper Understanding and Development
-%  thrustMapper v2.0
+%  thrustMapper v2.0-BRANCH
 %  Development Driver 2: Plotting Force Envelope
 %  2021.05.09
+%  2021.11.15
 
 close all; clear; clc; tic;
 
@@ -10,9 +11,19 @@ SHADING_INTERP = true;
 COM = [0,0,0]; %[in]
 tm = thrustMapper(COM);
 
-% Discretize Domain 
-th = (linspace(0,360,181))'; %(0:5:360)'; %[deg]
-phi = (linspace(-90,90,90))'; %[deg](-90:5:90)
+% Discretize Domain
+res = 'fine';
+switch(res)
+    case 'low'
+        th = (linspace(0,360,181))'; %(0:5:360)'; %[deg]
+        phi = (linspace(-90,90,90))'; %[deg](-90:5:90)
+    case 'medium'
+        th = (0:1:360)'; %(0:5:360)'; %[deg]
+        phi = (-90:1:90)'; %[deg](-90:5:90)
+    case 'fine'
+        th = (0:0.5:360)'; %[deg]
+        phi = (-90:0.5:90)'; %[deg]
+end
 n_th = length(th);
 n_phi = length(phi);
 [TH,PHI] = meshgrid(th,phi);

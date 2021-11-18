@@ -2,16 +2,6 @@
 %  Understanding, Validation, and Development
 %  Tyler Stagge
 
-%  The purpose of this class and the accompanying driver scripts is to
-%  better understand the thrustmapper as a mathematical and practical
-%  problem, as well as to validate the math being implemented in the actual
-%  python thrustmapper class. It was written independently but concurrent
-%  with Scott Hotchkiss' effort to do the necessary fixes/improvements/
-%  validation that the Software Team -- whose responsibility this was --
-%  failed to do until after we had already wasted 90% of our available pool
-%  hours with a horrible, unintuitive thrust mapper. Forgive me for being
-%  blunt.
-
 % VERSION HISTORY =========================================================
 % [v1.0] [2021.05.09]
 %   -A basic, workable version with some plotting functions to help with
@@ -23,6 +13,9 @@
 % [v2.0] [2021.05.10]
 %   -Added thruster limiting; the Force and Moment Envelopes can now be
 %    generated.
+% [BRANCH of v2.0] [2021.11.15]
+%   -Quick and dirty modification to let me visualize the thrust envelope
+%   of this new 8-point thruster config (no good name for it yet)
 
 classdef thrustMapper %[v2.0]
     properties
