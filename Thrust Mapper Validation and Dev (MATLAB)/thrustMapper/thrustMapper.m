@@ -3,15 +3,19 @@
 %  Tyler Stagge
 
 % INTRODUCTION ============================================================
-%  The purpose of this class and the accompanying driver scripts is to
-%  better understand the thrustmapper as a mathematical and practical
-%  problem, as well as to validate the math being implemented in the actual
-%  Python thrustmapper class. It was written independently but concurrent
-%  with Scott Hotchkiss' effort to do the necessary fixes/improvements/
-%  validation that the Software Team -- whose responsibility this was --
-%  failed to do until after we had already wasted 90% of our available pool
-%  hours with a horrible, unintuitive thrust mapper. Forgive me for being
-%  blunt.
+%  -The purpose of this class and the accompanying driver scripts is to
+%   better understand the thrustmapper as a mathematical and practical
+%   problem, as well as to validate the math being implemented in the actual
+%   Python thrustmapper class. It was originally written independently but
+%   concurrent with Scott Hotchkiss' revamp of ROV Triton's actual
+%   thrust mapper in May of 2020.
+%  -I would recommend that anyone looking at this brush up on their linear
+%   algebra. nullTraverse() is not for the mathematically faint-of-heart. I
+%   will, at some point, do some documentation that explains it visually in
+%   fewer dimensions.
+%  -In light of some of the recent discussions about changing the ROV's
+%   thruster configuration, I am revisiting this to finish what was left
+%   incomplete, make it more user friendly, and improve documentation.
 
 % VERSION HISTORY =========================================================
 % [v1.0] [2021.05.09]
@@ -47,10 +51,11 @@
 %    thrust envelope
 %   -Eliminated the unused maps
 %   -ADDED TO GITHUB (the ROVSIM library)
-% [v3.3] [2021.05.28]
+% [v3.3] [2021.05.28] -- left unfinished, resumed [2021.11.17]
 %   -Trying to make the rankB=1 case of nullTraverse() more mathematically
 %    complete (trying to catch any potential cases where option1 and
 %    option2 aren't viable, but some other (a1,a2) will be viable).
+% 
 
 classdef thrustMapper %[v3.3]
     properties
