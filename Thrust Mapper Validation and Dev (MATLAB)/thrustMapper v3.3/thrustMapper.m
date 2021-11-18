@@ -52,7 +52,7 @@
 %    complete (trying to catch any potential cases where option1 and
 %    option2 aren't viable, but some other (a1,a2) will be viable).
 
-classdef thrustMapper %[v3.2]
+classdef thrustMapper %[v3.3]
     properties
         thrusterCoords_VCSYS = [[4.4375, 5.6791, 0];
                                 [-4.4375, 5.6791, 0];
