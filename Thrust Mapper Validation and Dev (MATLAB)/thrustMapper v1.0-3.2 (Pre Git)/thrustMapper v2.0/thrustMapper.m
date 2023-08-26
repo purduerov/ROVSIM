@@ -26,25 +26,81 @@
 
 classdef thrustMapper %[v2.0]
     properties
-        thrusterCoords_VCSYS = [[4.4375, 5.6791, 0];
-                                [-4.4375, 5.6791, 0];
-                                [-4.4375, -5.6791, 0];
-                                [4.4375, -5.6791, 0];
-                                [7.5, 7.3125, -2.25];
-                                [-7.5, 7.3125, -2.25];
-                                [-7.5, -7.3125, -2.25];
-                                [7.5, -7.3125, -2.25]]*0.0254; %[m] In the Vehicle CSYS
+%         X13
+%         fowardDist = 7.75;
+%         sideDist = 6.75;
+%         verticalDist = 3;
+%         
+%         thrusterCoords_VCSYS = @(x,y,z) [[4.4375, 5.6791, 0];
+%                                 [-4.4375, 5.6791, 0];
+%                                 [-4.4375, -5.6791, 0];
+%                                 [4.4375, -5.6791, 0];
+%                                 [7.5, 7.3125, -2.25];
+%                                 [-7.5, 7.3125, -2.25];
+%                                 [-7.5, -7.3125, -2.25];
+%                                 [7.5, -7.3125, -2.25]]*0.0254; %[m] In the Vehicle CSYS
+%         thrusterCoords = []; %[in] in the COM CSYS
+%         alpha = deg2rad(20); %[rad] Angle of horizontal thrusters
+%         beta = 0;
+%         thrusterDirections = @(a,b) [[0,0,1];
+%                               [0,0,1];
+%                               [0,0,1];
+%                               [0,0,1];
+%                               [cos(a), -sin(a), 0];
+%                               [-cos(a), -sin(a), 0];
+%                               [-cos(a), sin(a), 0];
+%                               [cos(a), sin(a), 0]]; %This is gross, I know
+
+%         X14
+%         fowardDist = 8; %7.75
+%         sideDist = 6.75; %6.75
+%         verticalDist = 8; %6
+%         thrusterCoords_VCSYS = @(x,y,z) [[x, y, z];
+%                                 [-x, y, z];
+%                                 [-x, -y, z];
+%                                 [x, -y, z];
+%                                 [x, y, -z];
+%                                 [-x, y, -z];
+%                                 [-x, -y, -z];
+%                                 [x, -y, -z]]*0.0254; %[m] In the Vehicle CSYS
+%         thrusterCoords = []; %[in] in the COM CSYS
+%         alpha = deg2rad(30); %[rad] Yaw of thrusters
+%         beta = deg2rad(20); %[rad] Pitch of thrusters
+%         thrusterDirections = @(a,b) [[cos(a)*cos(b), -sin(a)*cos(b), -sin(b)];
+%                               [-cos(a)*cos(b), -sin(a)*cos(b), -sin(b)];
+%                               [-cos(a)*cos(b), sin(a)*cos(b), -sin(b)];
+%                               [cos(a)*cos(b), sin(a)*cos(b), -sin(b)];
+%                               [cos(a)*cos(b), -sin(a)*cos(b), sin(b)];
+%                               [-cos(a)*cos(b), -sin(a)*cos(b), sin(b)];
+%                               [-cos(a)*cos(b), sin(a)*cos(b), sin(b)];
+%                               [cos(a)*cos(b), sin(a)*cos(b), sin(b)]]; %This is gross, I know
+
+      X15
+        fowardDist = 8; %9
+        sideDist = 7.25; %6
+        verticalDist = 4; %4 up, 4.25 down
+        thrusterCoords_VCSYS = @(x,y,z) [[x, y, z];
+                                [-x, y, z];
+                                [-x, -y, z];
+                                [x, -y, z];
+                                [x, y, -z];
+                                [-x, y, -z];
+                                [-x, -y, -z];
+                                [x, -y, -z]]*0.0254; %[m] In the Vehicle CSYS
         thrusterCoords = []; %[in] in the COM CSYS
-        alpha = deg2rad(20); %[rad] Angle of horizontal thrusters
-        thrusterDirections = @(a) [[0,0,1];
-                              [0,0,1];
-                              [0,0,1];
-                              [0,0,1];
-                              [cos(a), -sin(a), 0];
-                              [-cos(a), -sin(a), 0];
-                              [-cos(a), sin(a), 0];
-                              [cos(a), sin(a), 0]]; %This is gross, I know
-        COM_Coords = [0,0,0]; %[m]
+        alpha = deg2rad(30); %[rad] Yaw of thrusters
+        beta = deg2rad(25); %[rad] Pitch of thrusters
+        thrusterDirections = @(a,b) [[cos(a)*cos(b), -sin(a)*cos(b), -sin(b)];
+                              [-cos(a)*cos(b), -sin(a)*cos(b), -sin(b)];
+                              [-cos(a)*cos(b), sin(a)*cos(b), -sin(b)];
+                              [cos(a)*cos(b), sin(a)*cos(b), -sin(b)];
+                              [cos(a)*cos(b), -sin(a)*cos(b), sin(b)];
+                              [-cos(a)*cos(b), -sin(a)*cos(b), sin(b)];
+                              [-cos(a)*cos(b), sin(a)*cos(b), sin(b)];
+                              [cos(a)*cos(b), sin(a)*cos(b), sin(b)]]; %This is gross, I know
+
+        COM_Coords = [0,0,0]; %[m] %Initialization line (real data fed into contstructor)
+
         map_T2M = []; %ThrusterList-to-Moment Map
         map_T2F = []; %ThrusterList-to-Force Map
         MAP_T2V = []; %Combined ThrusterList-to-Force/Moment(Vector) Map
@@ -62,10 +118,10 @@ classdef thrustMapper %[v2.0]
         %   COM = [in] Center of Mass Coordinates
         function self = thrustMapper(COM)
             self.COM_Coords = COM*0.0254;
-            self.thrusterDirections = self.thrusterDirections(self.alpha);
+            self.thrusterDirections = self.thrusterDirections(self.alpha, self.beta);
             
             % Coordiate Transformation
-            self.thrusterCoords = self.thrusterCoords_VCSYS - self.COM_Coords;
+            self.thrusterCoords = self.thrusterCoords_VCSYS(self.fowardDist, self.sideDist, self.verticalDist) - self.COM_Coords;
             
             % Moment Matrix
             self.map_T2M = zeros(8,3);
